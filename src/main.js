@@ -1,0 +1,87 @@
+import Vue from 'vue'
+import VueX from 'vuex'
+import routes from './config/PageRoutes'
+import store from './store/store';
+
+
+// plugins
+import VueRouter from 'vue-router'
+import VueBootstrap from 'bootstrap-vue'
+import VueNVD3 from 'vue-nvd3'
+import VueInsProgressBar from 'vue-ins-progress-bar'
+import Vueditor from '@agametov/vueditor'
+import VueHljs from 'vue-hljs'
+import VueSweetalert2 from 'vue-sweetalert2'
+import VueNotification from 'vue-notification'
+import VuePanel from './plugins/panel/'
+import VueSelect from 'vue-select'
+import VueMaskedInput from 'vue-maskedinput'
+import VueInputTag from 'vue-input-tag'
+import VueCountdown from '@xkeshi/vue-countdown';
+import VueChatScroll from 'vue-chat-scroll';
+import panZoom from 'vue-panzoom'
+
+import './config/fontawesome';
+
+// plugins css
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'nvd3/build/nv.d3.min.css'
+import 'vue-hljs/dist/vue-hljs.min.css'
+import '@agametov/vueditor/dist/style/vueditor.min.css'
+import 'simple-line-icons/css/simple-line-icons.css'
+import 'flag-icon-css/css/flag-icon.min.css'
+import 'bootstrap-social/bootstrap-social.css'
+import 'ionicons/dist/css/ionicons.min.css'
+import 'vue-good-table/dist/vue-good-table.css'
+import "vue-slider-component/theme/default.css";
+
+
+// color admin css
+import './assets/css/default/style.min.css'
+import './assets/css/default/style-responsive.min.css'
+import './assets/css/default/theme/default.css'
+
+// import './assets/css/style.css'
+
+
+
+const VueScrollTo = require('vue-scrollto')
+
+
+import App from './App.vue'
+
+Vue.use(VueScrollTo)
+Vue.use(VueChatScroll);
+Vue.config.productionTip = false
+
+Vue.use(VueX)
+Vue.use(VueRouter)
+Vue.use(VueBootstrap)
+Vue.use(VueNVD3)
+Vue.use(Vueditor)
+Vue.use(VueHljs)
+Vue.use(VueSweetalert2)
+Vue.use(VueNotification)
+Vue.use(VuePanel)
+Vue.use(panZoom)
+
+Vue.use(VueInsProgressBar, {
+  position: 'fixed',
+  show: true,
+  height: '3px'
+})
+Vue.component('v-select', VueSelect);
+Vue.component('masked-input', VueMaskedInput)
+Vue.component('input-tag', VueInputTag)
+Vue.component(VueCountdown.name, VueCountdown);
+
+const router = new VueRouter({
+	routes
+})
+
+new Vue({
+  render: h => h(App),
+  router,
+  store,
+}).$mount('#app')
